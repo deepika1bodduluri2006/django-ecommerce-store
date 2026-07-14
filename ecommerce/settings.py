@@ -8,16 +8,27 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# -----------------------------------------------------------------------------
 # Security
+# -----------------------------------------------------------------------------
 
 SECRET_KEY = 'django-insecure-^&5iri!ojm^h9k5*^!fq&vgywr%s=mpi9t8%-vo6d5+65dck$!'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+    ".railway.app",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.railway.app",
+]
 
+# -----------------------------------------------------------------------------
 # Application definition
+# -----------------------------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -33,7 +44,6 @@ INSTALLED_APPS = [
     'orders',
 ]
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -44,9 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 ROOT_URLCONF = 'ecommerce.urls'
-
 
 TEMPLATES = [
     {
@@ -63,11 +71,11 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
-
+# -----------------------------------------------------------------------------
 # Database
+# -----------------------------------------------------------------------------
 
 DATABASES = {
     'default': {
@@ -76,8 +84,9 @@ DATABASES = {
     }
 }
 
-
+# -----------------------------------------------------------------------------
 # Password validation
+# -----------------------------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -94,8 +103,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# -----------------------------------------------------------------------------
 # Internationalization
+# -----------------------------------------------------------------------------
 
 LANGUAGE_CODE = 'en-us'
 
@@ -105,31 +115,35 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files
+# -----------------------------------------------------------------------------
+# Static Files
+# -----------------------------------------------------------------------------
 
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-
-# Media files
+# -----------------------------------------------------------------------------
+# Media Files
+# -----------------------------------------------------------------------------
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
+# -----------------------------------------------------------------------------
 # Default primary key field type
+# -----------------------------------------------------------------------------
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# -----------------------------------------------------------------------------
 # Login
+# -----------------------------------------------------------------------------
 
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "product_list"
