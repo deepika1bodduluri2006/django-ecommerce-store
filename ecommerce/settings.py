@@ -14,20 +14,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-^&5iri!ojm^h9k5*^!fq&vgywr%s=mpi9t8%-vo6d5+65dck$!'
 
-DEBUG = False
+# For internship demo
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    ".railway.app",
+    "django-ecommerce-store-production.up.railway.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.railway.app",
+    "https://django-ecommerce-store-production.up.railway.app",
 ]
 
 # -----------------------------------------------------------------------------
-# Application definition
+# Applications
 # -----------------------------------------------------------------------------
 
 INSTALLED_APPS = [
@@ -44,6 +45,10 @@ INSTALLED_APPS = [
     'orders',
 ]
 
+# -----------------------------------------------------------------------------
+# Middleware
+# -----------------------------------------------------------------------------
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,6 +60,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ecommerce.urls'
+
+# -----------------------------------------------------------------------------
+# Templates
+# -----------------------------------------------------------------------------
 
 TEMPLATES = [
     {
@@ -85,7 +94,7 @@ DATABASES = {
 }
 
 # -----------------------------------------------------------------------------
-# Password validation
+# Password Validation
 # -----------------------------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -122,29 +131,28 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    BASE_DIR / "static",
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # -----------------------------------------------------------------------------
 # Media Files
 # -----------------------------------------------------------------------------
 
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # -----------------------------------------------------------------------------
-# Default primary key field type
+# Default Primary Key
 # -----------------------------------------------------------------------------
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # -----------------------------------------------------------------------------
-# Login
+# Authentication
 # -----------------------------------------------------------------------------
 
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "product_list"
-LOGOUT_REDIRECT_URL = "product_list"
+LOGOUT_REDIRECT_URL = "product_lists"
